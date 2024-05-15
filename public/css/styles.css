@@ -1,0 +1,133 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Oswald", sans-serif;
+}
+
+body {
+  background: #e1ecf2;
+}
+
+header {
+  background: linear-gradient(90deg, #51aae2 0%, #4193df 50%, #265CB2 100%);
+  color: #fff;
+  font-weight: 500;
+  font-size: 2rem; /* Adjusted font size */
+  line-height: 1.5;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  width: calc(100% - 70px);
+  height: 100%;  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15%;
+}
+.logo-img{
+  width:100%; /* you can use % */
+  height: auto;
+}
+
+.wrapper .top_navbar {
+  position: fixed;
+  top: 0px;
+  height: 100px;
+  width:100%;
+  display: flex;
+}
+
+.wrapper .top_navbar .hamburger {
+  width: 70px;
+  height: 100%;
+  background: #51aae2;
+  padding: 15px 17px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper .sidebar {
+  position: fixed;
+  top: 100px;
+  left: 0px;
+  background: #51aae2;
+  width: 200px;
+  height: calc(100% - 80px);
+  border-bottom-right-radius: 20px;
+  transition: all 0.3s ease;
+  overflow-y: auto; /* Added for scrollbar */
+}
+
+.wrapper .sidebar ul li a {
+  display: block;
+  padding: 15px; /* Adjusted padding */
+  color: #fff;
+}
+
+.wrapper .sidebar ul li a:hover,
+.wrapper .sidebar ul li a.active {
+  background: #4360b5;
+}
+
+.wrapper main {
+  margin-top: 100px;
+  margin-left: 220px; /* Adjusted margin */
+  padding: 15px;
+  transition: all 0.3s ease;
+}
+
+.wrapper.collapse .sidebar {
+  width: 70px;
+}
+
+.wrapper.collapse main {
+  margin-left: 90px; /* Adjusted margin */
+}
+
+
+/* Кнопки */  
+.btn {
+  display: block;
+  padding: 10px 40px;
+  margin: 10px auto;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 4px;
+  outline: none;
+  text-decoration: none;
+  color: #784ba0;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  max-width: fit-content;
+}
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn:visited {
+  transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
+  animation: gelatine 0.5s 1;
+}
+
+@keyframes gelatine {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+}
+/* Кнопки */  

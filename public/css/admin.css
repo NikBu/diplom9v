@@ -1,0 +1,124 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Oswald", sans-serif;
+}
+body {
+  background: #f5e1e2; /* Light pink background color */
+}
+header {
+  background: linear-gradient(90deg, #ff6b6b 0%, #ff8e8e 50%, #ff6b6b 100%); /* Red gradient background */
+  color: #fff;
+  font-weight: 500;
+  font-size: 2rem; /* Adjusted font size */
+  line-height: 1.5;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  display: flex;
+  height: 100px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+}
+.logo-img {
+  width: 100%; /* you can use % */
+  height: auto;
+}
+/* Form container */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+/* Form labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+/* Form input fields */
+.input-field {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ffcccc; /* Light red border color */
+  border-radius: 4px;
+  font-size: medium;
+}
+
+
+.float-left {
+  float: left;
+  font-size: 1.5rem;
+  color: #ff6666; /* Red color for text */
+}
+
+.float-right {
+  float: right;
+}
+.btn-create{
+  padding: 5px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  border-radius: 4px;
+  background-color: #e00f0f; /* Red button background color */
+  color: #fff;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.table th, .table td {
+  padding: 8px;
+  border: 1px solid #ffcccc; /* Light red border color */
+}
+.table th {
+  background-color: #ff6b6b; /* Red header background color */
+  color: #fff;
+}
+.table tr:nth-child(even) {
+  background-color: #ffe6e6; /* Light red background color for even rows */
+}
+.table tr:hover {
+  background-color: #ffcccc; /* Darker red background color on hover */
+}
+/* Submit button */
+.btn {
+  padding: 10px 20px;
+  background-color: #ff4d4d; /* Red button background color */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #ff3333; /* Darker red on hover */
+}
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn:visited {
+  transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
+  animation: gelatine 0.5s 1;
+}
+
+@keyframes gelatine {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+}
+/* Кнопки */  
