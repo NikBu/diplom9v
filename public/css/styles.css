@@ -14,10 +14,10 @@ body {
 }
 
 header {
-  background: linear-gradient(90deg, #51aae2 0%, #4193df 50%, #265CB2 100%);
+  background: linear-gradient(90deg, #3a5cae 0%, #2e4c7c 50%, #1a2f4a 100%);
   color: #fff;
   font-weight: 500;
-  font-size: 2rem; /* Adjusted font size */
+  font-size: 3rem; /* Adjusted font size */
   line-height: 1.5;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   width: calc(100% - 70px);
@@ -25,11 +25,14 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 15%;
 }
 .logo-img{
   width:100%; /* you can use % */
   height: auto;
+}
+header a{
+  color: wheat;
+  font-size: medium;
 }
 
 .wrapper .top_navbar {
@@ -43,19 +46,21 @@ header {
 .wrapper .top_navbar .hamburger {
   width: 70px;
   height: 100%;
-  background: #51aae2;
+  background: #3a5cae;
   padding: 15px 17px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: xx-large;
+  color: white  
 }
 
 .wrapper .sidebar {
   position: fixed;
   top: 100px;
   left: 0px;
-  background: #51aae2;
+  background: #3a5cae;
   width: 200px;
   height: calc(100% - 80px);
   border-bottom-right-radius: 20px;
@@ -71,7 +76,7 @@ header {
 
 .wrapper .sidebar ul li a:hover,
 .wrapper .sidebar ul li a.active {
-  background: #4360b5;
+  background: #2e4c7c;
 }
 
 .wrapper main {
@@ -87,6 +92,43 @@ header {
 
 .wrapper.collapse main {
   margin-left: 90px; /* Adjusted margin */
+}
+
+.sub-categories {
+  display: none;
+  position: fixed;
+ left: 200px; /* Position sub-categories to the right of the sidebar */
+  background: #265CB2; /* Different background color for sub-categories */
+  opacity: 0.7; /* Lower opacity for sub-categories */
+
+}
+
+.accordion-item {
+  margin-bottom: 5px;
+}
+.accordion-header {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.selected {
+  background: #051a5a; /* Add your selected category styling here */
+}
+
+.arrow {
+  display: none; /* Hide arrow by default */
+  position: absolute;
+  right: 0;
+}
+
+.arrow::after {
+  content: '▶';
+}
+
+.arrow.show {
+  display: inline-block; /* Show arrow if category has sub-categories */
+  margin-left: 10px;
 }
 
 

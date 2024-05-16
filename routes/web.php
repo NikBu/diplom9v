@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -31,7 +29,11 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 // Admin routes
 Route::prefix('admin')->group(function () {
-    Route::resource('/category', '\App\Http\Controllers\Admin\AdminCategoryController');
-    Route::resource('/item', '\App\Http\Controllers\Admin\AdminItemController');
-
+    Route::resource('/categories', '\App\Http\Controllers\Admin\AdminCategoryController');
+    Route::resource('/items', '\App\Http\Controllers\Admin\AdminItemController');
+    Route::resource('/news', '\App\Http\Controllers\Admin\AdminNewsController');
+    Route::resource('/offers', '\App\Http\Controllers\Admin\AdminSpecialOfferController');
+    Route::get('/', function () {
+        return view('admin.admin-index');
+    });
 });

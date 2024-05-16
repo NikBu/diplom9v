@@ -11,7 +11,7 @@ class AdminItemController extends Controller
     {
         $categories = Category::all(); 
         // Logic for retrieving any necessary data goes here
-        return view('admin.item', compact('categories'));
+        return view('admin.items.item-create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -33,7 +33,7 @@ class AdminItemController extends Controller
     {
         $items = Item::all();
         $categories = Category::all();
-        return view('admin.item-list', compact('items', 'categories'));
+        return view('admin.items.item-index', compact('items', 'categories'));
     }
 
     // public function show(Item $item)
@@ -63,6 +63,6 @@ class AdminItemController extends Controller
     {
         $item->delete();
 
-        return redirect()->route('admin.item-list');
+        return redirect()->route('admin.items.item-index');
     }
 }

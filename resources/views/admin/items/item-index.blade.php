@@ -2,7 +2,7 @@
 @section('page.title', 'Items')
 @section('content')
     <h2 class="float-left">Items</h2>
-    <a class="btn-create float-right" href="{{ route('item.create') }}">Create Item</a>
+    <a class="btn-create float-right" href="{{ route('items.create') }}">Create Item</a>
     <table class="table">
         <thead>
             <tr>

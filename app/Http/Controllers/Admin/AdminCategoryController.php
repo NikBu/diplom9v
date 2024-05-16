@@ -12,7 +12,7 @@ class AdminCategoryController extends Controller
     {
         $categories = Category::latest()->get();
 
-        return view('admin.category', compact('categories'));
+        return view('admin.categories.category-create', compact('categories'));
    }
 
     public function store(Request $request)
@@ -37,7 +37,7 @@ class AdminCategoryController extends Controller
     {
         $categories = Category::withDepth()->with('ancestors')->get();
 
-        return view('admin.category-list', compact('categories'));
+        return view('admin.categories.category-index', compact('categories'));
     }
 
     public function show(Category $category)

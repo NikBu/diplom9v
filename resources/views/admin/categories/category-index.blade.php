@@ -3,14 +3,14 @@
 @section('page.title', 'Категории ')
 
 @section('content')
-    <h2 class="float-left">Category</h2>
-    <a class="btn-create float-right" href="{{ route('category.create') }}" >Create Category</a>
+    <h2 class="float-left">Категории</h2>
+    <a class="btn-create float-right" href="{{ route('categories.create') }}" >Создать категорию</a>
     <table class="table">
         <thead class=>
             <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Ancestors</th>
+                <th>Название</th>
+                <th>Категория-Родитель</th>
             </tr>
         </thead>
         <tbody>
