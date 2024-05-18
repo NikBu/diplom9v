@@ -1,5 +1,5 @@
 <footer>Бурков Никита ИСТ-401</footer></div>
-
+</div>
 <script>
 // Sidebar script
 	document.querySelector(".hamburger").addEventListener("click", function() {

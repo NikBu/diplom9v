@@ -13,27 +13,43 @@ body {
   background: #e1ecf2;
 }
 
-header {
-  background: linear-gradient(90deg, #3a5cae 0%, #2e4c7c 50%, #1a2f4a 100%);
+header a {
+  color: wheat;
+  font-size: medium;
+  margin-left: 20px; /* Adjust spacing between links */
+}
+
+header a:hover {
+  color: #1fc2df; /* Change color on hover */
+}
+
+/* Style the additional links */
+header a {
+  font-size: medium;
   color: #fff;
-  font-weight: 500;
-  font-size: 3rem; /* Adjusted font size */
-  line-height: 1.5;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  width: calc(100% - 70px);
-  height: 100%;  
+  text-decoration: none;
+  margin-left: 20px; /* Adjust spacing between links */
+}
+
+/* Adjust the header layout */
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: linear-gradient(90deg, #3a5cae 0%, #2e4c7c 50%, #1a2f4a 100%);
+  color: #fff;
+  font-weight: 500;
+  font-size: 2rem; /* Adjusted font size */
+  line-height: 1.5;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  width: calc(100% - 70px);
+  height: 100%;
 }
 .logo-img{
   width:100%; /* you can use % */
   height: auto;
 }
-header a{
-  color: wheat;
-  font-size: medium;
-}
+
 
 .wrapper .top_navbar {
   position: fixed;
@@ -42,7 +58,6 @@ header a{
   width:100%;
   display: flex;
 }
-
 .wrapper .top_navbar .hamburger {
   width: 70px;
   height: 100%;
@@ -56,16 +71,31 @@ header a{
   color: white  
 }
 
+.wrapper {
+  display: flex;
+}
 .wrapper .sidebar {
   position: fixed;
   top: 100px;
-  left: 0px;
+  left: 0;
   background: #3a5cae;
   width: 200px;
   height: calc(100% - 80px);
   border-bottom-right-radius: 20px;
   transition: all 0.3s ease;
-  overflow-y: auto; /* Added for scrollbar */
+  overflow-y: auto;
+}
+.wrapper .main-container {
+  margin-top: 100px;
+  margin-left: 220px;
+  padding: 15px;
+  transition: all 0.3s ease;
+}
+.wrapper.collapse .sidebar {
+  width: 70px;
+}
+.wrapper.collapse .main-container {
+  margin-left: 90px;
 }
 
 .wrapper .sidebar ul li a {
@@ -73,36 +103,18 @@ header a{
   padding: 15px; /* Adjusted padding */
   color: #fff;
 }
-
 .wrapper .sidebar ul li a:hover,
 .wrapper .sidebar ul li a.active {
   background: #2e4c7c;
 }
 
-.wrapper main {
-  margin-top: 100px;
-  margin-left: 220px; /* Adjusted margin */
-  padding: 15px;
-  transition: all 0.3s ease;
-}
-
-.wrapper.collapse .sidebar {
-  width: 70px;
-}
-
-.wrapper.collapse main {
-  margin-left: 90px; /* Adjusted margin */
-}
-
+/* Настройки аккордиона */
 .sub-categories {
   display: none;
   position: fixed;
  left: 200px; /* Position sub-categories to the right of the sidebar */
   background: #265CB2; /* Different background color for sub-categories */
-  opacity: 0.7; /* Lower opacity for sub-categories */
-
 }
-
 .accordion-item {
   margin-bottom: 5px;
 }
@@ -173,3 +185,42 @@ header a{
   }
 }
 /* Кнопки */  
+
+/*  Главная страница*/
+.news-block, .special-offer-block {
+  margin-top: 20px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; /* Added transition for smooth hover effect */
+}
+
+.news-block h2, .special-offer-block h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.news-block h3, .special-offer-block h3 {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.news-block p, .special-offer-block p {
+  margin-top: 5px;
+  color: #777;
+}
+
+.news-block:hover, .special-offer-block:hover {
+  transform: translateY(-5px); /* Move the block up on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adjusted box shadow on hover */
+}
+
+.news-block:hover h2, .special-offer-block:hover h2 {
+  color: #007bff; /* Change heading color on hover */
+}
+
+.news-block:hover p, .special-offer-block:hover p {
+  color: #555; /* Change paragraph text color on hover */
+}

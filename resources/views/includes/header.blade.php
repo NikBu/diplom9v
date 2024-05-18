@@ -7,13 +7,16 @@
 <body>
 <div class="wrapper">
   <div class="top_navbar">
-      <div class="hamburger">☰</div>
-      <header>
-          <a href="/" class="main-logo"><img class="logo-img" src="{{ asset('images/logo_ft1.png') }}" alt="Логотип"></a>
-      
-          <h class="centered">Фенстер Техник</h>
-          <a href="/about">О компании</a>
-      </header>
+    <div class="hamburger">☰</div>
+    <header>
+        <a href="/" class="main-logo"><img class="logo-img" src="{{ asset('images/logo_ft1.png') }}" alt="Логотип"></a>
+        <h class="centered">Фенстер Техник</h>
+        <a href="/about">О компании</a>
+        <a href="/link1">Link 1</a>
+        <a href="/link2">Link 2</a>
+        <a href="/link3">Link 3</a>
+        <a href="/link4">Link 4</a>
+    </header>
   </div>
   <div class="sidebar">
     <ul class="accordion">
@@ -28,5 +31,4 @@
             </li>
         @endforeach
     </ul>
-</div>
 </div>
