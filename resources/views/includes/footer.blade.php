@@ -1,4 +1,5 @@
-<footer>Бурков Никита ИСТ-401</footer></div>
+</div>
+<footer>Бурков Никита ИСТ-401</footer>
 </div>
 <script>
 // Sidebar script

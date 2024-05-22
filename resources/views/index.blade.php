@@ -2,45 +2,49 @@
 @section('page.title', 'Фенстер Техник')
 @section('content')
 <div class="main-container">
-    <div class="news-block">
-        <h2>Latest News</h2>
-        @if($newestNews)
-            <div class="latest-news">
-                <h3>{{ $newestNews->title }}</h3>
-                <p>{{ $newestNews->content }}</p>
-                <p>Published on: {{ $newestNews->published_at->format('d M Y') }}</p>
+    <div class="feed">
+        <div class="news-block">
+            <div class="current-post">
+                <a href="/news/" ><h2>Свежие новости</h2></a>
+                <div>
+                    @foreach($latestNews as $newsItem)
+                        <input name="news-tab" id="news-tab{{ $newsItem-> id}}" type="radio" checked />
+                        <section class="tab-content">
+                            <a href="/news/{{ $newsItem->id }}">
+                                <h2>{{ $newsItem-> title }} </h2>
+                                <p>{{ $newsItem-> content }}</p>
+                            </a>
+                        </section>
+                   @endforeach
+                </div>
             </div>
-            <div class="previous-posts">
-                <h3>Previous Posts</h3>
-                <ul>
-                    @foreach($previousNews as $previousPost)
-                        <li>{{ $previousPost->title }}</li>
+            <div class="posts-list tabs-container">
+                @foreach($latestNews as $newsItem)
+                    <label for="news-tab{{ $newsItem-> id}}"> {{ $newsItem-> title }} </label>
+                @endforeach
+            </div>
+        </div>
+        <div class="special-offer-block">
+            <div class="current-post">
+                <a href="/special-offers/" ><h2>Свежие акции</h2></a>
+                <div class="offer">
+                    @foreach($latestSpecialOffers as $offersItem)
+                        <input name="offers-tab" id="offers-tab{{ $offersItem-> id}}" type="radio" checked />
+                        <section class="tab-content">
+                            <a href="/special-offers/{{ $newsItem->id }}" >
+                                <h2> {{ $offersItem-> title }} </h2>
+                                <p> {{ $offersItem-> description }}</p>
+                            </a>
+                        </section>
                     @endforeach
-                </ul>
+                </div>
             </div>
-        @else
-            <p>No news available.</p>
-        @endif
-    </div>
-    <div class="special-offer-block">
-        <h2>Latest Special Offer</h2>
-        @if($newestSpecialOffer)
-            <div class="latest-offer">
-                <h3>{{ $newestSpecialOffer->title }}</h3>
-                <p>{{ $newestSpecialOffer->description }}</p>
-                <p>Offer valid from {{ $newestSpecialOffer->start_date->format('d M Y') }} to {{ $newestSpecialOffer->end_date->format('d M Y') }}</p>
+            <div class="posts-list tabs-container">
+                @foreach($latestSpecialOffers as $offersItem)
+                    <label for="offers-tab{{ $offersItem-> id}}">{{ $offersItem-> title }}</label>
+                @endforeach
             </div>
-            <div class="previous-offers">
-                <h3>Previous Offers</h3>
-                <ul>
-                    @foreach($previousOffers as $previousOffer)
-                        <li>{{ $previousOffer->title }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @else
-            <p>No special offers available.</p>
-        @endif
+        </div>
     </div>
 </div>
 @endsection

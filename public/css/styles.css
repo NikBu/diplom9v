@@ -87,15 +87,16 @@ header {
 }
 .wrapper .main-container {
   margin-top: 100px;
-  margin-left: 220px;
-  padding: 15px;
+  margin-left: 200px;
+  padding: 5px;
   transition: all 0.3s ease;
+  width: 100%;
 }
 .wrapper.collapse .sidebar {
   width: 70px;
 }
 .wrapper.collapse .main-container {
-  margin-left: 90px;
+  margin-left: 70px;
 }
 
 .wrapper .sidebar ul li a {
@@ -187,40 +188,124 @@ header {
 /* Кнопки */  
 
 /*  Главная страница*/
-.news-block, .special-offer-block {
-  margin-top: 20px;
-  padding: 10px;
-  background: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease; /* Added transition for smooth hover effect */
+.feed{
+  background: #f5f5f5; /* Change the background color of the feed block */
+  display: flex;
+  flex-direction: row;
 }
-
-.news-block h2, .special-offer-block h2 {
-  font-size: 1.5rem;
-  color: #333;
+.feed h2 {
+  font-size: 1.8rem; /* Adjust the font size for headings within the feed block */
   margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Number of lines you want to display */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+.feed p {
+  font-size: 1.4rem; /* Adjust the font size for paragraphs within the feed block */
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Number of lines you want to display */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  }
+.feed a{
+  color: rgb(0, 0, 0);
+}
+.feed a:hover{
+  color: rgb(16, 43, 131); 
 }
 
-.news-block h3, .special-offer-block h3 {
-  font-size: 1.2rem;
-  color: #555;
+.feed .news-block:hover, .feed .special-offer-block:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adjust the box shadow on hover */
 }
 
-.news-block p, .special-offer-block p {
-  margin-top: 5px;
-  color: #777;
+.news-block, .special-offer-block {
+    padding: 3px;
+    margin: 0 10px 0 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-evenly;
+    width: 48%;  /* Adjust width as needed */
+}
+.current-post{
+  display: block;
+  padding: 10px; /* Add padding for spacing */
+  width: 75%;
+}
+.posts-list{
+  background: #2652CC;
+  width: 25%;
 }
 
-.news-block:hover, .special-offer-block:hover {
-  transform: translateY(-5px); /* Move the block up on hover */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adjusted box shadow on hover */
+/* Tabs Names Label */
+.tabs-container label{
+  position: relative;
+  padding: 6px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 1em;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines you want to display */
+  -webkit-box-orient: vertical;
+  overflow:hidden;
+}
+/* Hover effect on tabs names */
+.tabs-container label:hover{
+ background: rgba(0, 0, 0, 0.2);
+}
+.tabs-container label.active{
+  background: rgba(255, 0, 0, 0.2);
+}
+/* Content area for tabs */
+.tab-content{
+  display: none;
+  border-top: 1px solid #051a5a;
+}
+.tab-content a{
+  display: block;
+  height: 87%;
+  color: rgb(0, 0, 0);
+}
+.tab-content.active {
+  background-color: #f0f0f0; /* Light grey background */
+  border: 1px solid #ddd; /* Light grey border */
+  padding: 10px; /* Padding inside the tab */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Slight shadow for depth */
+}
+/* Hide input radio from users */
+input[name="news-tab"]{
+  display: none;
+}
+/* Show tab when input checked */
+input[name="news-tab"]:checked + .tab-content{
+  display: block;
+  animation: slide 0.5s forwards;
+}
+/* Hide input radio from users */
+input[name="offers-tab"]{
+  display: none;
+}
+/* Show tab when input checked */
+input[name="offers-tab"]:checked + .tab-content{
+  display: block;
+  animation: slide 0.5s forwards;
 }
 
-.news-block:hover h2, .special-offer-block:hover h2 {
-  color: #007bff; /* Change heading color on hover */
-}
-
-.news-block:hover p, .special-offer-block:hover p {
-  color: #555; /* Change paragraph text color on hover */
+/* Slide animation for tab contents */
+@keyframes slide{
+  from{
+    left: -100%;
+    opacity: 0;
+  }
+  to{
+    left: 0;
+    opacity: 1;
+  }
 }

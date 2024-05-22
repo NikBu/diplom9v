@@ -16,6 +16,11 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
+Route::get('/news', [HomeController::class, 'showNews'])->name('news');
+Route::get('/news/{id}', [HomeController::class, 'showNewsItem'])->name('news.show');
+Route::get('/special-offers', [HomeController::class, 'showSpecialOffers'])->name('special_offers');
+Route::get('/special-offers/{id}', [HomeController::class, 'showSpecialOffersItem'])->name('special-offers.show');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

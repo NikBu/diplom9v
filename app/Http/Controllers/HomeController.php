@@ -15,14 +15,32 @@ class HomeController extends Controller
         // Retrieve the top-level categories with their sub-categories
         $categories = Category::with('children')->whereNull('parent_id')->get();
     
-        // Retrieve the latest news and special offer
-        $newestNews = News::latest('published_at')->first();
-        $newestSpecialOffer = SpecialOffer::latest('start_date')->first();
-    
         // Retrieve 3-7 previous news and special offers (titles only)
-        $previousNews = News::where('id', '!=', $newestNews->id)->latest()->take(6)->get();
-        $previousOffers = SpecialOffer::where('id', '!=', $newestSpecialOffer->id)->latest()->take(6)->get();
+        $latestNews = News::latest()->take(6)->get();
+        $latestSpecialOffers = SpecialOffer::latest()->take(6)->get();
     
-        return view('index', compact('categories', 'newestNews', 'newestSpecialOffer', 'previousNews', 'previousOffers'));
+        return view('index', compact('categories', 'latestNews', 'latestSpecialOffers'));
+    }
+
+    // feed
+    public function showNews()
+    {
+        $news = News::latest()->get();
+        return view('news.index', compact('news'));
+    }
+    public function showNewsItem($id)
+    {
+        $news = News::findOrFail($id);
+        return view('news.show', compact('news'));
+    }
+    public function showSpecialOffers()
+    {
+        $specialOffers = SpecialOffer::latest()->get();
+        return view('special-offers.index', compact('specialOffers'));
+    }
+    public function showSpecialOffersItem($id)
+    {
+        $specialOffer = SpecialOffer::findOrFail($id);
+        return view('special-offers.show', compact('specialOffer'));
     }
 }

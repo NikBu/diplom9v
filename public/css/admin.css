@@ -24,6 +24,12 @@ header {
   align-items: center;
   padding: 0 5%;
 }
+header a{
+  color: rgb(255, 255, 255);
+}
+header a:hover{
+  color: rgb(16, 43, 131); 
+}
 .logo-img {
   width: 100%; /* you can use % */
   height: auto;

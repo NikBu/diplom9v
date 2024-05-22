@@ -29,7 +29,7 @@ class AdminNewsController extends Controller
 
         News::create($request->all());
 
-        return redirect()->route('admin.news.news-index')->with('success', 'News article created successfully');
+        return redirect()->route('news.index')->with('success', 'News article created successfully');
     }
 
     // public function edit(News $news)
