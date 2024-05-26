@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('page.title', 'Create Item')
 @section('content')
-<form action="{{ route('item.store') }}" method="post">
+<form action="{{ route('items.store') }}" method="post" enctype="multipart/form-data">
     @csrf
     <label for="name">Name</label>
     <input id="name" class="input-field" type="text" name="name" value="{{ old('name') }}" required>
@@ -11,14 +11,14 @@
     <input id="price" class="input-field" type="text" name="price" value="{{ old('price') }}" required>
     <label for="quantity">Quantity</label>
     <input id="quantity" class="input-field" type="number" name="quantity" value="{{ old('quantity') }}" required>
-    
     <label for="categories">Categories</label>
     <select id="categories" name="categories[]" multiple>
         @foreach ($categories as $category)
             <option value="{{ $category->id }}">{{ $category->name }}</option>
         @endforeach
     </select>
-      
+    <label for="image">Image</label>
+    <input type="file" name="image" accept="image/*">
     <button type="submit" class="btn">Save Item</button>
 </form>
 @endsection

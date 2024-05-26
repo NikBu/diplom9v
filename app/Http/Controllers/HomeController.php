@@ -6,22 +6,21 @@ use App\Models\Category;
 use App\Models\News;
 use App\Models\SpecialOffer;
 use App\Models\Item;
+use App\Models\Image;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        // Retrieve the top-level categories with their sub-categories
         $categories = Category::with('children')->whereNull('parent_id')->get();
-    
-        // Retrieve 3-7 previous news and special offers (titles only)
         $latestNews = News::latest()->take(6)->get();
         $latestSpecialOffers = SpecialOffer::latest()->take(6)->get();
     
-        return view('index', compact('categories', 'latestNews', 'latestSpecialOffers'));
+        $items = Item::paginate(20); // Fetch items with pagination
+    
+        return view('index', compact('categories', 'latestNews', 'latestSpecialOffers', 'items'));
     }
-
     // feed
     public function showNews()
     {
@@ -42,5 +41,10 @@ class HomeController extends Controller
     {
         $specialOffer = SpecialOffer::findOrFail($id);
         return view('special-offers.show', compact('specialOffer'));
+    }
+
+    public function showItem(Item $item)
+    {
+        return view('items.show', compact('item'));
     }
 }

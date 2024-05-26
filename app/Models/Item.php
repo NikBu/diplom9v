@@ -13,6 +13,11 @@ class Item extends Model
     {
         return $this->hasMany(Image::class);
     }
+    
+    public function firstImage()
+    {
+        return $this->images()->first();
+    }
 
     // Define the relationship with the Category model
     public function categories()

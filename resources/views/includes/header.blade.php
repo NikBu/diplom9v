@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <head>
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">

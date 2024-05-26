@@ -21,6 +21,9 @@ Route::get('/news/{id}', [HomeController::class, 'showNewsItem'])->name('news.sh
 Route::get('/special-offers', [HomeController::class, 'showSpecialOffers'])->name('special_offers');
 Route::get('/special-offers/{id}', [HomeController::class, 'showSpecialOffersItem'])->name('special-offers.show');
 
+Route::get('/items/{item}', [HomeController::class, 'showItem'])->name('item.show');
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('page.title', 'Создание категории')
 @section('content')
-<form action="{{ route('category.store') }}" method="post">
+<form action="{{ route('categories.store') }}" method="post">
     @csrf
     <label for="category">Название</label>
     <input id="category" class="input-field" type="text" @error('unfilled') is-invalid @enderror" name="category" value="{{ old('category') }}" required>

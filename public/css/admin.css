@@ -35,23 +35,53 @@ header a:hover{
   height: auto;
 }
 /* Form container */
+/* Form container */
 form {
-  max-width: 400px;
+  max-width: 600px;
   margin: 0 auto;
+  background: #fff; /* White background color */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
 }
+
 /* Form labels */
 label {
-  display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  font-weight: bold;
 }
+
 /* Form input fields */
 .input-field {
   width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ffcccc; /* Light red border color */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc; /* Light gray border color */
   border-radius: 4px;
-  font-size: medium;
+}
+
+/* Image display */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+}
+/* Delete image checkbox */
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+.carousel-container {
+  overflow-x: scroll;
+  display: flex;
+  scroll-behavior: smooth;
+}
+.carousel-container div {
+  flex: 0 0 auto;
+  border: 2px solid #ccc;
+}
+.image-column {
+  max-width: 300px;
 }
 
 
@@ -94,8 +124,8 @@ label {
 }
 /* Submit button */
 .btn {
-  padding: 10px 20px;
-  background-color: #ff4d4d; /* Red button background color */
+  padding: 10px 10px;
+  background-color: #eb7373; /* Red button background color */
   color: #fff;
   border: none;
   border-radius: 4px;
