@@ -13,7 +13,7 @@
         <a href="/" class="main-logo"><img class="logo-img" src="{{ asset('images/logo_ft1.png') }}" alt="Логотип"></a>
         <h class="centered">Фенстер Техник</h>
         <a href="/about">О компании</a>
-        <a href="/link1">Link 1</a>
+        <a href="/contacts">Контакты</a>
         <a href="/link2">Link 2</a>
         <a href="/link3">Link 3</a>
         <a href="/link4">Link 4</a>
@@ -23,10 +23,10 @@
     <ul class="accordion">
         @foreach($categories as $category)
             <li class="accordion-item">
-                <a href="#" class="accordion-header">{{ $category->name }}<span class="arrow"></span></a>
+                <a href="/categories/{{$category->id }}" class="accordion-header">{{ $category->name }}<span class="arrow"></span></a>
                 <ul class="sub-categories">
                     @foreach($category->children as $child)
-                        <li><a href="#">{{ $child->name }}</a></li>
+                        <li><a href="/categories/{{$child->id }}">{{ $child->name }}</a></li>
                     @endforeach
                 </ul>
             </li>

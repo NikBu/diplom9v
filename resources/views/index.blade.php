@@ -50,7 +50,7 @@
     <div class="item-block">
         @foreach($items as $item)
             <div class="item">
-                <a href="{{ route('item.show', $item->id) }}">
+                <a href="/items/{{$item->id}}">
                 @if($item->firstImage())
                     <img src="{{ asset('/storage/' . $item->firstImage()->url) }}" alt="{{ $item->name }}">
                 @else
