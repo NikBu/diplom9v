@@ -17,14 +17,15 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contacts', [HomeController::class, 'contacts'])->name('contacts');
+Route::get('/vacancies', [HomeController::class, 'vacancies'])->name('vacancies');
 
 
-Route::get('/news', [HomeController::class, 'showNews'])->name('news');
-Route::get('/news/{id}', [HomeController::class, 'showNewsItem'])->name('news.show');
-Route::get('/special-offers', [HomeController::class, 'showSpecialOffers'])->name('special_offers');
-Route::get('/special-offers/{id}', [HomeController::class, 'showSpecialOffersItem'])->name('special-offers.show');
-Route::get('/items/{itemID}', [HomeController::class, 'showItem']);
-Route::get('/categories/{categoryId}', [HomeController::class, 'showCategory']);
+Route::get('/news', [HomeController::class, 'showNews'])->name('main.news.index');
+Route::get('/news/{id}', [HomeController::class, 'showNewsItem'])->name('main.news.show');
+Route::get('/special-offers', [HomeController::class, 'showSpecialOffers'])->name('main.special_offers.index');
+Route::get('/special-offers/{id}', [HomeController::class, 'showSpecialOffersItem'])->name('main.special-offers.show');
+Route::get('/items/{itemID}', [HomeController::class, 'showItem'])->name('main.items.show');
+Route::get('/categories/{categoryId}', [HomeController::class, 'showCategory'])->name('main.categories.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -37,6 +38,8 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
 // Admin routes
 Route::prefix('admin')->group(function () {
     Route::resource('/categories', '\App\Http\Controllers\Admin\AdminCategoryController');

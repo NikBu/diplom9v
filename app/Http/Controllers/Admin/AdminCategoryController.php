@@ -40,22 +40,43 @@ class AdminCategoryController extends Controller
         return view('admin.categories.category-index', compact('categories'));
     }
 
-    public function show(Category $category)
-    {
-        //
-    }
-
+    // public function show(Category $category)
+    // {
+    //     return view('admin.categories.category-show', compact('category'));
+    // }
+    
     public function edit(Category $category)
     {
-        //
+        $categories = Category::latest()->get();
+        return view('admin.categories.category-edit', compact('category', 'categories'));
     }
 
     public function update(Request $request, Category $category)
     {
-        //
+        $category->update([
+            'name' => $request->category,
+            'description' => $request->description
+        ]);
+    
+        if ($request->parent && $request->parent !== 'none') {
+            // Find the new parent category
+            $newParent = Category::find($request->parent);
+    
+            // Remove the category from its current parent
+            $category->parent_id = null;
+            $category->save();
+    
+            // Move the category under the new parent
+            $newParent->appendNode($category);
+        }
+    
+        return redirect()->route('categories.index');
     }
+    
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+    
+        return redirect()->route('categories.index');
     }
 }

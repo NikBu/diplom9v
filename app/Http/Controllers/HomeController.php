@@ -31,29 +31,40 @@ class HomeController extends Controller
         $categories = Category::with('children')->whereNull('parent_id')->get();
         return view('contacts', compact('categories'));
     }
+    public function vacancies()
+    {
+        $categories = Category::with('children')->whereNull('parent_id')->get();
+        return view('vacancies', compact('categories'));
+    }
+
 
 
     // feed
     public function showNews()
     {
+        $categories = Category::with('children')->whereNull('parent_id')->get();
         $news = News::latest()->get();
-        return view('news.index', compact('news'));
+        return view('news.index', compact('categories','news'));
     }
     public function showNewsItem($id)
     {
+        $categories = Category::with('children')->whereNull('parent_id')->get();
         $news = News::findOrFail($id);
-        return view('news.show', compact('news'));
+        return view('news.show', compact('categories','news'));
     }
     public function showSpecialOffers()
     {
+        $categories = Category::with('children')->whereNull('parent_id')->get();
         $specialOffers = SpecialOffer::latest()->get();
-        return view('special-offers.index', compact('specialOffers'));
+        return view('special-offers.index', compact('categories','specialOffers'));
     }
     public function showSpecialOffersItem($id)
     {
+        $categories = Category::with('children')->whereNull('parent_id')->get();
         $specialOffer = SpecialOffer::findOrFail($id);
-        return view('special-offers.show', compact('specialOffer'));
+        return view('special-offers.show', compact('categories','specialOffer'));
     }
+
 
     public function showItem($itemId)
     {
@@ -61,7 +72,6 @@ class HomeController extends Controller
         $item = Item::with('categories', 'images')->findOrFail($itemId);
         return view('items.show', compact('categories','item'));
     }
-
     public function showCategory($categoryId)
     {
         $categories = Category::with('children')->whereNull('parent_id')->get();

@@ -32,28 +32,28 @@ class AdminNewsController extends Controller
         return redirect()->route('news.index')->with('success', 'News article created successfully');
     }
 
-    // public function edit(News $news)
-    // {
-    //     return view('admin.news.edit', compact('news'));
-    // }
+    public function edit(News $news)
+    {
+        return view('admin.news.news-edit', compact('news'));
+    }
 
-//     public function update(Request $request, News $news)
-//     {
-//         $request->validate([
-//             'title' => 'required',
-//             'content' => 'required',
-//             'published_at' => 'required|date'
-//         ]);
+    public function update(Request $request, News $news)
+    {
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'published_at' => 'required|date'
+        ]);
 
-//         $news->update($request->all());
+        $news->update($request->all());
 
-//         return redirect()->route('news.index')->with('success', 'News article updated successfully');
-//     }
+        return redirect()->route('news.index')->with('success', 'News article updated successfully');
+    }
 
     public function destroy(News $news)
     {
         $news->delete();
 
-        return redirect()->route('news.news.news-')->with('success', 'News article deleted successfully');
+        return redirect()->route('news.index')->with('success', 'News article deleted successfully');
     }
 }

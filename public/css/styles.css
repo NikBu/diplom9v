@@ -44,6 +44,7 @@ header {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   width: calc(100% - 70px);
   height: 100%;
+  padding-right: 20px;
 }
 .logo-img{
   width:100%; /* you can use % */
@@ -436,7 +437,7 @@ input[name="offers-tab"]:checked + .tab-content{
   padding-left: 5px;
   margin: 10px 0px;
 }
-/*  */
+/* Контакты */
 .contacts-container h1 {
   background: linear-gradient(90deg, #3a5cae 0%, #2e4c7c 50%, #1a2f4a 100%);
   color: #ffffff;
@@ -467,4 +468,105 @@ input[name="offers-tab"]:checked + .tab-content{
   width: 100%;
   height: 400px;
   margin: 20px 0;
+}
+/* Вакансии */
+.vacancies-container{
+  font-size: large;
+}
+.vacancies-container h1 {
+  background: linear-gradient(90deg, #3a5cae 0%, #2e4c7c 50%, #1a2f4a 100%);
+  color: #ffffff;
+  padding: 10px 0;
+  text-align: center;
+}
+.vacancy-block ul li::before{
+  content: "•";
+  color: #3a5cae;
+  margin-right: 5px;
+}
+
+/* Новости */
+.article-preview a{
+  display: block;
+  color: rgb(0, 0, 0);
+}
+.article-preview {
+  background-color: #f0f0f0; /* Light grey background */
+  border: 1px solid #ddd; /* Light grey border */
+  padding: 10px; /* Padding inside the tab */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Slight shadow for depth */
+  margin-bottom: 10px;
+}
+.article-preview h2 {
+  font-size: 1.8rem; /* Adjust the font size for headings within the feed block */
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Number of lines you want to display */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+.article-preview p {
+  font-size: 1.4rem; /* Adjust the font size for paragraphs within the feed block */
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Number of lines you want to display */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  }
+  
+.news-article {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 20px;
+}
+.news-article h1 {
+    text-indent: 20px;
+    font-size: 2.4em;
+    font-weight: 700px;
+}
+.article-date {
+  padding-bottom: 40px;
+}
+.news-article p {
+    font-size: 1.7em;
+    line-height: 1.5;
+    text-indent: 20px;
+}
+
+/* Акции */
+.special-offer-article{
+  background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 20px;
+}
+.special-offer-article h1 {
+  text-indent: 20px;
+  font-size: 2.4em;
+  font-weight: 700px;
+}
+.special-offer-article p {
+  font-size: 1.7em;
+  line-height: 1.5;
+  text-indent: 20px;
+}
+
+.special-offer-article li {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+.special-offer-article li a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.special-offer-article li a:hover {
+  color: #007bff;
 }

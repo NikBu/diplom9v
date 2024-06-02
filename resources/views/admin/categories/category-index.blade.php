@@ -11,6 +11,7 @@
                 <th>#</th>
                 <th>Название</th>
                 <th>Категория-Родитель</th>
+                <th>Опции</th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +27,14 @@
                     @foreach ($category->ancestors as $item)
                         {{ $item->name }},
                     @endforeach
+                </td>
+                <td>
+                    <a href="{{ route('categories.edit', $category->id) }}" class="btn">Изменить</a>
+                    <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Вы уверены, что хотите удалить данную категорию?')">Удалить</button>
+                    </form>
                 </td>
             </tr>
             @endforeach

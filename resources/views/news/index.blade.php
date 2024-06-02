@@ -1,16 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Latest News</title>
-</head>
-<body>
-    <h1>Latest News</h1>
-    <ul>
-        @foreach($news as $item)
-            <li>{{ $item->title }}</li>
-        @endforeach
-    </ul>
-</body>
-</html>
+@extends('layouts.base')
+<title>Новости</title>
+@section('content')
+<div class="main-container">
+    <h1>Последние новости:</h1>
+        <div class="news-list">
+            @foreach($news as $newsItem)
+                <section class="article-preview">
+                    <a href="/news/{{ $newsItem->id }}">
+                        <h2>{{ $newsItem-> title }} </h2>
+                        <p>{{ $newsItem-> content }}</p>
+                        <span>{{$newsItem -> published_at}}</span>
+                    </a>
+                </section>
+            @endforeach
+        </div>
+</div>
+@endsection

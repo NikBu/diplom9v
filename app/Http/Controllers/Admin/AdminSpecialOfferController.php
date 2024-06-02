@@ -35,4 +35,30 @@ class AdminSpecialOfferController extends Controller
             
         return redirect()->back();
     }
+    public function edit(SpecialOffer $offer)
+    {
+        $items = Item::all();
+        return view('admin.offers.special-offer-edit', compact('offer', 'items'));
+    }
+
+    public function update(Request $request, SpecialOffer $offer)
+    {
+        $offer->update([
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'start_date' => $request->input('start_date'),
+            'end_date' => $request->input('end_date'),
+        ]);
+
+        $offer->items()->sync($request->input('items'), ['discount_amount' => $request->input('discount_amount')]);
+
+        return redirect()->route('offers.index')->with('success', 'Special Offer deleted successfully');
+    }
+    public function destroy(SpecialOffer $offer)
+    {
+        $offer->items()->detach(); // Detach associated items
+        $offer->delete(); // Delete the special offer
+    
+        return redirect()->route('offers.index')->with('success', 'Special Offer deleted successfully');
+    }
 }

@@ -31,7 +31,7 @@
                     @foreach($latestSpecialOffers as $offersItem)
                         <input name="offers-tab" id="offers-tab{{ $offersItem-> id}}" type="radio" checked />
                         <section class="tab-content">
-                            <a href="/special-offers/{{ $newsItem->id }}" >
+                            <a href="/special-offers/{{ $offersItem->id }}" >
                                 <h2> {{ $offersItem-> title }} </h2>
                                 <p> {{ $offersItem-> description }}</p>
                             </a>

@@ -14,9 +14,13 @@
         <h class="centered">Фенстер Техник</h>
         <a href="/about">О компании</a>
         <a href="/contacts">Контакты</a>
-        <a href="/link2">Link 2</a>
-        <a href="/link3">Link 3</a>
-        <a href="/link4">Link 4</a>
+        <a href="/vacancies">Вакансии</a>
+        @auth
+            <a href="/profile">Личный Кабинет</a>
+         @else
+            <a href="/login">Войти</a>
+            <a href="/register">Зарегистрироваться</a>
+        @endauth
     </header>
   </div>
   <div class="sidebar">

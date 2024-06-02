@@ -7,11 +7,12 @@
         <thead>
             <tr>
                 <th>#</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Items</th>
+                <th>Заголоов</th>
+                <th>Описание</th>
+                <th>Дата начала</th>
+                <th>Дата окончания</th>
+                <th>Товары</th>
+                <th>Опции</th>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +27,14 @@
                     @foreach ($offer->items as $item)
                         {{ $item->name }} ({{ $item->pivot->discount_amount }}% off),
                     @endforeach
+                </td>
+                <td>
+                    <a href="{{ route('offers.edit', $offer->id) }}" class="btn">Изменить</a>
+                    <form action="{{ route('offers.destroy', $offer->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Вы уверены, что хотите удалить данную категорию?')">Удалить</button>
+                    </form>
                 </td>
             </tr>
             @endforeach
