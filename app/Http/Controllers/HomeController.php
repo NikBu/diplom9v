@@ -43,7 +43,7 @@ class HomeController extends Controller
     public function showNews()
     {
         $categories = Category::with('children')->whereNull('parent_id')->get();
-        $news = News::latest()->get();
+        $news = News::paginate(20);
         return view('news.index', compact('categories','news'));
     }
     public function showNewsItem($id)
@@ -55,7 +55,7 @@ class HomeController extends Controller
     public function showSpecialOffers()
     {
         $categories = Category::with('children')->whereNull('parent_id')->get();
-        $specialOffers = SpecialOffer::latest()->get();
+        $specialOffers = SpecialOffer::paginate(20);
         return view('special-offers.index', compact('categories','specialOffers'));
     }
     public function showSpecialOffersItem($id)

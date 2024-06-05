@@ -13,22 +13,47 @@ body {
   background: #e1ecf2;
 }
 
-header a {
-  color: wheat;
-  font-size: medium;
-  margin-left: 20px; /* Adjust spacing between links */
+/* Define the scrollbar style */
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 15px;
 }
 
+/* Define the thumb style */
+body::-webkit-scrollbar-thumb {
+   background: linear-gradient(90deg, #031133 0%, #2e4c7c 50%, #1a2f4a 100%);
+}
+
+/* Define the track style */
+body::-webkit-scrollbar-track:horizontal {
+  background-color: white;
+}
 header a:hover {
   color: #1fc2df; /* Change color on hover */
 }
 
-/* Style the additional links */
-header a {
+header a{
   font-size: medium;
   color: #fff;
   text-decoration: none;
   margin-left: 20px; /* Adjust spacing between links */
+  margin-bottom: 5px;
+}
+.header-btn {
+  font-size: medium;
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px; /* Adjust spacing between links */
+  margin-bottom: 5px;
+  
+  /* Remove button styling */
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer; /* Add pointer cursor to indicate clickable element */
+}
+.header-btn:hover {
+  color: #1fc2df; /* Change color on hover */
 }
 
 /* Adjust the header layout */
@@ -170,6 +195,25 @@ header {
 .btn:visited {
   transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
   animation: gelatine 0.5s 1;
+}
+.btn-red{
+  background-color: red;
+  color: white;
+  padding: 5px;
+}
+.btn-red:hover{
+  background-color: darkred;
+  cursor: pointer;
+}
+.btn-simple{
+  background-color: rgba(0, 111, 185, 0.774);
+  color: white;
+  font-size: large;
+  padding: 15px 20px;
+}
+.btn-simple:hover{
+  background-color: rgb(20, 40, 216);
+  cursor: pointer;
 }
 
 @keyframes gelatine {
@@ -569,4 +613,65 @@ input[name="offers-tab"]:checked + .tab-content{
 
 .special-offer-article li a:hover {
   color: #007bff;
+}
+
+/* Стилизация аутентификакии */
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+}
+
+
+.success-message {
+  color: green;
+  font-size: 0.8rem;
+}
+/* Profile Information Section */
+.profile-section {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.profile-section h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.profile-section p {
+  font-size: 1.4rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.profile-form {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.profile-form label {
+  font-weight: bold;
+  font-size: large;
+  color: #333;
+}
+
+.profile-form input[type="text"],
+.profile-form input[type="email"],
+.profile-form input[type="password"] {
+  width: 100%;
+  border: 1px solid #ccc;
+  font-size: large;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+
+.profile-message {
+  font-size: 1rem;
+  color: green;
+  margin-top: 10px;
 }

@@ -37,3 +37,4 @@ document.querySelectorAll('.accordion-item').forEach(item => {
 });
 </script>
 </body>
+</html>

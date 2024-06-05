@@ -15,5 +15,6 @@
             </section>
         @endforeach
     </div>
+    {{ $specialOffers->links('vendor.pagination.default') }}
 </div>
 @endsection

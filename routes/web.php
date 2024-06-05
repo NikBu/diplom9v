@@ -27,10 +27,6 @@ Route::get('/special-offers/{id}', [HomeController::class, 'showSpecialOffersIte
 Route::get('/items/{itemID}', [HomeController::class, 'showItem'])->name('main.items.show');
 Route::get('/categories/{categoryId}', [HomeController::class, 'showCategory'])->name('main.categories.show');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

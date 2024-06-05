@@ -15,13 +15,12 @@ class AdminSpecialOfferController extends Controller
         $specialOffers = SpecialOffer::all();
         return view('admin.offers.special-offer-index', compact('specialOffers'));
     }
-
     public function create()
     {
         $items = Item::all();
         return view('admin.offers.special-offer-create', compact('items'));
     }
-
+    
     public function store(Request $request)
     {
         $specialOffer = new SpecialOffer();
@@ -31,8 +30,11 @@ class AdminSpecialOfferController extends Controller
         $specialOffer->end_date = $request->input('end_date');
         $specialOffer->save();
     
-        $specialOffer->items()->attach($request->input('items'), ['discount_amount' => $request->input('discount_amount')]);
-            
+        // Attach selected items with their discount amounts
+        foreach ($request->input('selected_items', []) as $itemId) {
+            $specialOffer->items()->attach($itemId, ['discount_amount' => $request->input('discount_amount.' . $itemId)]);
+        }
+    
         return redirect()->back();
     }
     public function edit(SpecialOffer $offer)
@@ -43,17 +45,24 @@ class AdminSpecialOfferController extends Controller
 
     public function update(Request $request, SpecialOffer $offer)
     {
-        $offer->update([
-            'title' => $request->input('title'),
-            'description' => $request->input('description'),
-            'start_date' => $request->input('start_date'),
-            'end_date' => $request->input('end_date'),
-        ]);
+        $offer->title = $request->input('title');
+        $offer->description = $request->input('description');
+        $offer->start_date = $request->input('start_date');
+        $offer->end_date = $request->input('end_date');
+        $offer->save();
 
-        $offer->items()->sync($request->input('items'), ['discount_amount' => $request->input('discount_amount')]);
+        // Sync selected items with their discount amounts
+        $selectedItems = $request->input('selected_items', []);
+        $discountAmounts = $request->input('discount_amount', []);
+        $itemsData = [];
+        foreach ($selectedItems as $itemId) {
+            $itemsData[$itemId] = ['discount_amount' => $discountAmounts[$itemId] ?? 0];
+        }
+        $offer->items()->sync($itemsData);
 
         return redirect()->route('offers.index')->with('success', 'Special Offer deleted successfully');
     }
+
     public function destroy(SpecialOffer $offer)
     {
         $offer->items()->detach(); // Detach associated items

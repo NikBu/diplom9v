@@ -1,16 +1,16 @@
 @extends('layouts.admin')
-@section('page.title', 'Items')
+@section('page.title', 'Товары')
 @section('content')
-    <h2 class="float-left">Items</h2>
-    <a class="btn-create float-right" href="{{ route('items.create') }}">Create Item</a>
+    <h2 class="float-left">Товары</h2>
+    <a class="btn-create float-right" href="{{ route('items.create') }}">Создать новый лот</a>
     <table class="table">
         <thead>
             <tr>
                 <th>#</th>
-                <th>Название</th>
+                <th>Наименование</th>
                 <th>Описание</th>
-                <th>Количество</th>
-                <th>Цена</th>
+                <th>Количество(Шт.)</th>
+                <th>Цена(Руб.)</th>
                 <th>Категории</th>
                 <th>Изображение</th>
                 <th>Действия</th>
@@ -49,11 +49,11 @@
                     </div>
                 </td>
                 <td>
-                    <a href="{{ route('items.edit', $item->id) }}" class="btn">Edit</a>
+                    <a href="{{ route('items.edit', $item->id) }}" class="btn">Изменить</a>
                     <form action="{{ route('items.destroy', $item->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Вы уверены, что хотите удалить данный лот?')">Удалить</button>
                     </form>
                 </td>
             </tr>

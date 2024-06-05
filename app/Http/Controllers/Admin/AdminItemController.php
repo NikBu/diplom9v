@@ -28,14 +28,15 @@ class AdminItemController extends Controller
         // Attach selected categories to the item
         $item->categories()->attach($request->categories);
 
-        // Handle image upload
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('images', 'public');
-            $image = new Image([
-                'url' => $imagePath,
-                'item_id' => $item->id
-            ]);
-            $image->save();
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $file) {
+                $imagePath = $file->store('images', 'public');
+                $image = new Image([
+                    'url' => $imagePath,
+                    'item_id' => $item->id
+                ]);
+                $image->save();
+            }
         }
 
         return redirect()->back();

@@ -13,12 +13,12 @@
                 @if($item->firstImage())
                     <img src="{{ asset('/storage/' . $item->firstImage()->url) }}" alt="{{ $item->name }}">
                 @else
-                    <img src="{{ asset('storage/images/placeholder.png') }}" alt="No Image Available">
+                    <img src="{{ asset('storage/images/placeholder.png') }}" alt="Изображение недоступно">
                 @endif
                 <h3>{{ $item->name }}</h3>
                 </a>
-                <p>Quantity: {{ $item->quantity }}</p>
-                <p>Price: ${{ $item->price }}</p>
+                <p>Количество: {{ $item->quantity }} шт</p>
+                <p>Цена: {{ $item->price }} руб.</p>
             </div>
         @endforeach
     </div>

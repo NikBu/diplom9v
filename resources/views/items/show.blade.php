@@ -19,9 +19,10 @@
                         </div>
                     @endforeach
                 </div>
-                <p>Quantity: {{ $item->quantity }}</p>
-                <p>Price: ${{ $item->price }}</p>   
-                <p>Description: {{ $item->description }}</p>
+                <h3>Количество: {{ $item->quantity }} шт.</h3>
+                <h3>Цена: {{ $item->price }} руб.</h3>   
+                <h3>Описание:</h3> 
+                <p> {{ $item->description }}</p>
                 </div>
             </div>
         </div>

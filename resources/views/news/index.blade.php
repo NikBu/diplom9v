@@ -14,5 +14,6 @@
                 </section>
             @endforeach
         </div>
+        {{ $news->links('vendor.pagination.default') }}
 </div>
 @endsection

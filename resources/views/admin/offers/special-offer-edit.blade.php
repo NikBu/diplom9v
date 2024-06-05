@@ -1,26 +1,59 @@
 @extends('layouts.admin')
-@section('page.title', 'Edit Special Offer')
+@section('page.title', 'Редактирование акции')
 @section('content')
-    <h2 class="float-left">Edit Special Offer</h2>
+    <h2 class="float-left">Редактирование акцииr</h2>
     <form action="{{ route('offers.update', $offer->id) }}" method="post">
         @csrf
         @method('PUT')
-        <label for="title" class="input-field">Title</label>
+        <label for="title" class="input-field">Заголовок</label>
         <input type="text" name="title" class="input-field" value="{{ $offer->title }}" required>
-        <label for="description" class="input-field">Description</label>
+        <label for="description" class="input-field">Описание</label>
         <textarea name="description" class="input-field" rows="4" required>{{ $offer->description }}</textarea>
-        <label for="start_date" class="input-field">Start Date</label>
+        <label for="start_date" class="input-field">Дата начала</label>
         <input type="date" name="start_date" class="input-field" value="{{ \Carbon\Carbon::parse($offer->start_date)->format('Y-m-d') }}" required>
-        <label for="end_date" class="input-field">End Date</label>
+        <label for="end_date" class="input-field">Дата окончания</label>
         <input type="date" name="end_date" class="input-field" value="{{ \Carbon\Carbon::parse($offer->end)->format('Y-m-d') }}" required>
-        <label for="items" class="input-field">Select Items</label>
-        <select name="items[]" multiple class="input-field">
-            @foreach ($items as $item)
-                <option value="{{ $item->id }}" {{ $offer->items->contains($item->id) ? 'selected' : '' }}>{{ $item->name }}</option>
-            @endforeach
-        </select>
-        <label for="discount_amount" class="input-field">Discount Amount (%)</label>
-        <input type="number" name="discount_amount" class="input-field" value="{{ $offer->discount_amount }}" required>
-        <button type="submit" class="btn">Update Special Offer</button>
+        
+        
+        <h3>Выберите товары и размер скидки:</h3>
+        <input type="text" class="search-items input-field" placeholder="Поиск по наименованию...">
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th>Товар</th>
+                    <th>Размер скидки (%)</th>
+                    <th>Выбор</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($items as $item)
+                    <tr>
+                        <td>{{ $item->name }}</td>
+                        <td>
+                            <input type="number" name="discount_amount[{{ $item->id }}]" class="input-field" value="{{ $offer->items->find($item->id)->pivot->discount_amount ?? 0 }}">
+                        </td>
+                        <td>
+                            <input type="checkbox" name="selected_items[]" value="{{ $item->id }}" {{ $offer->items->contains($item->id) ? 'checked' : '' }}>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+        
+        <button type="submit" class="btn">Обновить</button>
     </form>
+    <script>
+        document.querySelector('.search-items').addEventListener('input', function() {
+            const searchValue = this.value.toLowerCase();
+            const rows = document.querySelectorAll('.items-table tbody tr');
+            rows.forEach(row => {
+                const item = row.getElementsByTagName('td')[0].innerText.toLowerCase();
+                if (item.includes(searchValue)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
 @endsection

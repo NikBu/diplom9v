@@ -1,55 +1,39 @@
-<section class="space-y-6">
-    <header>
-        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            {{ __('Delete Account') }}
-        </h2>
-
-        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.') }}
-        </p>
-    </header>
-
-    <x-danger-button
-        x-data=""
-        x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-    >{{ __('Delete Account') }}</x-danger-button>
-
-    <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
-        <form method="post" action="{{ route('profile.destroy') }}" class="p-6">
+<section class="profile-section">
+    <div>
+        <h2>Удалить аккаунт</h2>
+        <p>После удаления вашего аккаунта все его ресурсы и данные будут удалены навсегда. Перед удалением аккаунта, пожалуйста, скачайте любые данные или информацию, которые вы хотите сохранить.</p>
+    </div>
+    <button onclick="openModal('confirm-user-deletion')" class=" btn-red">Удалить аккаунт</button>
+    <div id="confirm-user-deletion" class="modal" style="display: none;">
+        <form method="post" action="{{ route('profile.destroy') }}" class="form-container">
             @csrf
             @method('delete')
-
-            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                {{ __('Are you sure you want to delete your account?') }}
-            </h2>
-
-            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.') }}
-            </p>
-
-            <div class="mt-6">
-                <x-input-label for="password" value="{{ __('Password') }}" class="sr-only" />
-
-                <x-text-input
-                    id="password"
-                    name="password"
-                    type="password"
-                    class="mt-1 block w-3/4"
-                    placeholder="{{ __('Password') }}"
-                />
-
-                <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
+            <h2>Вы уверены, что хотите удалить ваш аккаунт?</h2>
+            <p>После удаления вашего аккаунта все его ресурсы и данные будут удалены навсегда. Пожалуйста, введите свой пароль, чтобы подтвердить, что вы хотите удалить ваш аккаунт навсегда.</p>
+            <div class="form-group">
+                <label for="password" class="sr-only">Пароль</label>
+                <input id="password" name="password" type="password" placeholder="Пароль" />
+                @if($errors->userDeletion->has('password'))
+                    <span class="error-message">{{ $errors->userDeletion->first('password') }}</span>
+                @endif
             </div>
-
-            <div class="mt-6 flex justify-end">
-                <x-secondary-button x-on:click="$dispatch('close')">
-                    {{ __('Cancel') }}
-                </x-secondary-button>
-
-                <x-danger-button class="ml-3">
-                    {{ __('Delete Account') }}
-                </x-danger-button>
+            <div class="form-actions">
+                <button onclick="closeModal()" class="btn-red" type="button">Отмена</button>
+                <button type="submit" class="btn-red">Удалить аккаунт</button>
             </div>
         </form>
-    </x-modal>
+    </div>
 </section>
+
+<script>
+    // Функция открытия модального окна
+    function openModal(modalId) {
+        document.getElementById(modalId).style.display = "block";
+    }
+
+    // Функция закрытия модального окна
+    function closeModal() {
+        document.getElementById("confirm-user-deletion").style.display = "none";
+    }
+
+</script>

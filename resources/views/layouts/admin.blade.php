@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang = "ru">
 <head>
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -5,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 </head>
 <title>@yield('page.title', config('app.name'))</title>
+<body>
 <header>
     <a href="/" class="main-logo"><img class="logo-img" src="{{ asset('images/logo_ft1.png') }}" alt="Логотип"></a>
     <a href="/admin/categories">Категории</a>
@@ -16,4 +19,5 @@
 <main>
 @yield('content')
 </main>
-@include('includes.footer')
+</body>
+</html>

@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 @section('page.title', 'Акции')
 @section('content')
-    <h2 class="float-left">Special Offers</h2>
-    <a class="btn-create float-right" href="{{ route('offers.create') }}">Create Special Offer</a>
+    <h2 class="float-left">Акции</h2>
+    <a class="btn-create float-right" href="{{ route('offers.create') }}">Создать акцию</a>
     <table class="table">
         <thead>
             <tr>
@@ -33,7 +33,7 @@
                     <form action="{{ route('offers.destroy', $offer->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('Вы уверены, что хотите удалить данную категорию?')">Удалить</button>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Вы уверены, что хотите удалить данную акцию?')">Удалить</button>
                     </form>
                 </td>
             </tr>

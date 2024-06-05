@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang = "ru">
 <head>
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,24 +17,30 @@
         <a href="/contacts">Контакты</a>
         <a href="/vacancies">Вакансии</a>
         @auth
-            <a href="/profile">Личный Кабинет</a>
+            <div class="profile-options">
+                <a href="/profile">Личный кабинет</a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="header-btn">Выйти</button>
+                </form>
+           </div>
          @else
             <a href="/login">Войти</a>
             <a href="/register">Зарегистрироваться</a>
         @endauth
     </header>
-  </div>
-  <div class="sidebar">
-    <ul class="accordion">
-        @foreach($categories as $category)
-            <li class="accordion-item">
-                <a href="/categories/{{$category->id }}" class="accordion-header">{{ $category->name }}<span class="arrow"></span></a>
-                <ul class="sub-categories">
-                    @foreach($category->children as $child)
-                        <li><a href="/categories/{{$child->id }}">{{ $child->name }}</a></li>
-                    @endforeach
-                </ul>
-            </li>
-        @endforeach
-    </ul>
-</div>
+    </div>
+    <div class="sidebar">
+        <ul class="accordion">
+            @foreach($categories as $category)
+                <li class="accordion-item">
+                    <a href="/categories/{{$category->id }}" class="accordion-header">{{ $category->name }}<span class="arrow"></span></a>
+                    <ul class="sub-categories">
+                        @foreach($category->children as $child)
+                            <li><a href="/categories/{{$child->id }}">{{ $child->name }}</a></li>
+                        @endforeach
+                    </ul>
+                </li>
+            @endforeach
+        </ul>
+    </div>
