@@ -13,23 +13,23 @@ use App\Models\Category;
 class ProfileController extends Controller
 {
     /**
-     * Display the user's profile form.
+     * Отображение формы профиля пользователя.
      */
     public function edit(Request $request): View
     {
         $user = $request->user();
 
-        // Retrieve categories with children and pass them to the view
+        // Получение категорий с дочерними элементами и передача их в представление
         $categories = Category::with('children')->whereNull('parent_id')->get();
 
         return view('profile.edit', [
             'user' => $user,
-            'categories' => $categories, // Add categories to the view data
+            'categories' => $categories, // Добавление категорий в данные представления
         ]);
     }
 
     /**
-     * Update the user's profile information.
+     * Обновление информации профиля пользователя.
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
@@ -41,11 +41,11 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profile.edit')->with('status', 'Профиль обновлен');
     }
 
     /**
-     * Delete the user's account.
+     * Удаление учетной записи пользователя.
      */
     public function destroy(Request $request): RedirectResponse
     {

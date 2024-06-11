@@ -8,7 +8,7 @@
             <section class="article-preview">
                 <a href="/special-offers/{{ $offer->id }}">
                 <h2>{{ $offer->title }}</h2>
-                <p>{{ $offer->description }}</p>
+                <p>{{ strip_tags($offer->description) }}</p>
                 <p><strong>С:</strong> {{ $offer->start_date->format('M d, Y') }}</p>
                 <p><strong>По:</strong> {{ $offer->end_date->format('M d, Y') }}</p>
                 </a>

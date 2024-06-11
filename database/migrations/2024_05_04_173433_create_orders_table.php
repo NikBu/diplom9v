@@ -15,13 +15,12 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('user_id'); // Change 'customer_id' to 'user_id'
             $table->dateTime('order_date');
             $table->decimal('total_amount', 10, 2);
             $table->string('status')->default('pending');
             $table->timestamps();
-
-            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); // Change 'customers' to 'users'
         });
     }
 

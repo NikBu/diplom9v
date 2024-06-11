@@ -19,7 +19,11 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $article->title }}</td>
                 <td>{{ $article->published_at }}</td>
-                <td>{{ $article->content}}</td>
+                <td>   
+                    <div class="preview-short">
+                        {{ $article->content}}
+                    </div>
+                </td>
                 <td>
                     <a href="{{ route('news.edit', $article->id) }}" class="btn">Изменить</a>
                     <form action="{{ route('news.destroy', $article->id) }}" method="POST">

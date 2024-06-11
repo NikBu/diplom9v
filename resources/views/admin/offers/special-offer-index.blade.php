@@ -20,7 +20,11 @@
             <tr>
                 <td>{{ $key + 1 }}</td>
                 <td>{{ $offer->title }}</td>
-                <td>{{ $offer->description }}</td>
+                <td>    
+                    <div class="preview-short">
+                        {{ $offer->description }}
+                    </div>
+                </td>
                 <td>{{ $offer->start_date }}</td>
                 <td>{{ $offer->end_date }}</td>
                 <td>

@@ -3,7 +3,7 @@
 @section('content')
 <div class="main-container">
     <div class="vacancies-container">
-        <h1>Вакансии</h1>
+        <h1 class="gradient-header">Вакансии</h1>
         <div class="vacancy-block">
             <p>ООО "Фенстер Техник" ищет торговых представителей в Калужской, Курской, Смоленской и Орловской областях.</p>
             <p>Требования к соискателям:</p>

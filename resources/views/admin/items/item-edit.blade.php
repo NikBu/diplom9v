@@ -7,7 +7,7 @@
     <label for="name">Наименование</label>
     <input id="name" class="input-field" type="text" name="name" value="{{ $item->name }}" required>
     <label for="description">Описание</label>
-    <textarea id="description" class="input-field" name="description" required>{{ $item->description }}</textarea>
+    <textarea id="content" class="input-field" name="description">{{ $item->description }}</textarea>
     <label for="price">Цена(Руб.)</label>
     <input id="price" class="input-field" type="number" step="0.01" name="price" value="{{ $item->price }}" required>
     <label for="quantity">Количество(Шт.)</label>
@@ -34,6 +34,7 @@
     <input type="file" name="new_images[]" accept="image/*" multiple><br><br>
     <button type="submit" class="btn">Обновить</button>
 </form>
+@include('includes.tinyMCE-script')
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const container = document.querySelector('.carousel-container');

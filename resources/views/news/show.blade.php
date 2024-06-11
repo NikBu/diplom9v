@@ -6,7 +6,7 @@
     <section class="news-article">
         <h1>{{ $news-> title }}</h2>
             <span class="article-date">{{$news->published_at}}</span>
-        <p>{{ $news-> content }}</p>
+        {!! $news-> content !!}
     </section>
 </div>
 @endsection

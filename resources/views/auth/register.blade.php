@@ -15,7 +15,14 @@
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
-
+        
+        <div>
+            <label for="phone_number" class="block font-medium text-sm text-gray-700 dark:text-gray-300">
+                {{ __('Номер телефона') }}
+            </label>
+            <input id="phone_number" class="block mt-1 w-full form-input" type="text" name="phone_number" :value="old('phone_number')" required />
+        </div>
+        
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Пароль')" />

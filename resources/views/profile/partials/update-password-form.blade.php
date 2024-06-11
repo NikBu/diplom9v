@@ -14,8 +14,8 @@
             @endif
         </div>
         <div class="profile-form">
-            <label for="password">Новый пароль</label>
-            <input id="password" name="password" type="password" autocomplete="new-password" />
+            <label for="new_password">Новый пароль</label>
+            <input id="new_password" name="password" type="password" autocomplete="new-password" />
             @if($errors->updatePassword->has('password'))
                 <span class="error-message">{{ $errors->updatePassword->first('password') }}</span>
             @endif

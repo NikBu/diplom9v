@@ -4,7 +4,7 @@
 <div class="main-container">
     <div class="category-details">
         <h2>{{ $currentCategory->name }}</h2>
-        <p>{{ $currentCategory->description }}</p>
+        {!! $currentCategory->description !!}
     </div>
     <div class="item-block">
         @foreach($items as $item)

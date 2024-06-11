@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('page.title', 'Фенстер Техник')
+@section('page.title', 'Личный кабинет')
 @section('content')
 <div class="main-container">
     @include('profile.partials.update-profile-information-form')

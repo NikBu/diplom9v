@@ -12,7 +12,8 @@
                         <section class="tab-content">
                             <a href="/news/{{ $newsItem->id }}">
                                 <h2>{{ $newsItem-> title }} </h2>
-                                <p>{{ $newsItem-> content }}</p>
+                                <p>{{ strip_tags($newsItem->content) }}</p>
+
                             </a>
                         </section>
                    @endforeach
@@ -33,7 +34,7 @@
                         <section class="tab-content">
                             <a href="/special-offers/{{ $offersItem->id }}" >
                                 <h2> {{ $offersItem-> title }} </h2>
-                                <p> {{ $offersItem-> description }}</p>
+                                <p>{{ strip_tags($offersItem->description) }}</p>
                             </a>
                         </section>
                     @endforeach
@@ -58,8 +59,8 @@
                 @endif
                 <h3>{{ $item->name }}</h3>
                 </a>
-                <p>Quantity: {{ $item->quantity }}</p>
-                <p>Price: ${{ $item->price }}</p>
+                <p>Количество: {{ $item->quantity }} шт.</p>
+                <p>Цена: {{ $item->price }} руб.</p>
             </div>
         @endforeach
     </div>

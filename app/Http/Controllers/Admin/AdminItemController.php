@@ -10,12 +10,14 @@ use Illuminate\Support\Facades\Storage;
 
 class AdminItemController extends Controller
 {
+    // Отображение формы создания товара
     public function create()
     {
         $categories = Category::all(); 
         return view('admin.items.item-create', compact('categories'));
     }
 
+    // Сохранение нового товара
     public function store(Request $request)
     {    
         $item = Item::create([
@@ -25,7 +27,7 @@ class AdminItemController extends Controller
             'quantity' => $request->quantity
         ]);
 
-        // Attach selected categories to the item
+        // Привязка выбранных категорий к товару
         $item->categories()->attach($request->categories);
 
         if ($request->hasFile('images')) {
@@ -42,23 +44,28 @@ class AdminItemController extends Controller
         return redirect()->back();
     }
 
+    // Отображение списка всех товаров
     public function index()
     {
         $items = Item::with('categories', 'images')->get();
         $categories = Category::all();
         return view('admin.items.item-index', compact('items', 'categories'));
     }
+
+    // Отображение подробной информации о товаре
     // public function show(Item $item)
     // {
     //     return view('admin.item-show', compact('item'));
     // }
 
+    // Отображение формы редактирования товара
     public function edit(Item $item)
     {
         $categories = Category::all();
         return view('admin.items.item-edit', compact('item', 'categories'));
     }
 
+    // Обновление информации о товаре
     public function update(Request $request, Item $item)
     {
         $item->update([
@@ -68,10 +75,10 @@ class AdminItemController extends Controller
             'quantity' => $request->quantity
         ]);
     
-        // Sync the selected categories with the item
+        // Синхронизация выбранных категорий с товаром
         $item->categories()->sync($request->categories);
     
-        // Delete selected images
+        // Удаление выбранных изображений
         if ($request->has('images_to_delete')) {
             foreach ($request->images_to_delete as $imageId) {
                 $image = Image::find($imageId);
@@ -80,7 +87,7 @@ class AdminItemController extends Controller
             }
         }
     
-        // Handle new image uploads
+        // Обработка новых изображений
         if ($request->hasFile('new_images')) {
             foreach ($request->file('new_images') as $file) {
                 $imagePath = $file->store('images', 'public');
@@ -95,17 +102,18 @@ class AdminItemController extends Controller
         return redirect()->route('items.index');
     }
 
+    // Удаление товара
     public function destroy(Item $item)
     {
-        // Delete the item
+        // Удаление товара
         $item->delete();
 
-        // Delete associated images
+        // Удаление связанных изображений
         foreach ($item->images as $image) {
             Storage::disk('public')->delete($image->url);
             $image->delete();
         }
 
-        return redirect()->route('items.index')->with('success', 'Item deleted successfully');
+        return redirect()->route('items.index')->with('success', 'Товар успешно удален');
     }
 }

@@ -21,8 +21,23 @@
                 </div>
                 <h3>Количество: {{ $item->quantity }} шт.</h3>
                 <h3>Цена: {{ $item->price }} руб.</h3>   
+                @auth
+                    <form action="{{ route('add.item.to.order') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="item_id" value="{{ $item->id }}">
+                        <label for="quantity">Количество:</label>
+                        <input type="number" name="quantity" id="quantity" value="1">
+                        <button type="submit" class="btn-red">Добавить в корзину</button>
+                    </form>
+                    {{-- ! Окно уведомления / Modal window --}}
+                    @if (session('success'))
+                        @include('components.notification-window', ['modalId' => 'successModal', 'modalTitle' => 'Успешно добавлено в корзину', 'modalContent' => 'Товар успешно добавлен в вашу корзину.'])
+                    @endif   
+                @else
+                    <p>Пожалуйста <a href="{{ route('login') }}">войдите</a> , чтобьы добавить товар в корзину.</p>
+                @endauth
                 <h3>Описание:</h3> 
-                <p> {{ $item->description }}</p>
+                {!! $item->description !!}
                 </div>
             </div>
         </div>

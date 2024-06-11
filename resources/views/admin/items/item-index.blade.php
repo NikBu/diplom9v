@@ -26,7 +26,9 @@
                     {{ $item->name }}
                 </td>
                 <td>
-                    {{ $item->description }}
+                    <div class="preview-short">
+                        {{ $item->description }}
+                    </div>
                 </td>
                 <td>
                     {{ $item->quantity }}

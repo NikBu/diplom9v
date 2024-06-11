@@ -5,6 +5,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
 <div class="wrapper">
@@ -12,10 +13,17 @@
     <div class="hamburger">☰</div>
     <header>
         <a href="/" class="main-logo"><img class="logo-img" src="{{ asset('images/logo_ft1.png') }}" alt="Логотип"></a>
+         <!-- Search bar -->
+        <form action="/search" method="GET" class="search-bar">
+            <input type="text" name="query" placeholder="Поиск...">
+            <button type="submit">Поиск</button>
+        </form>
+        <!-- End of search bar -->
         <h class="centered">Фенстер Техник</h>
         <a href="/about">О компании</a>
         <a href="/contacts">Контакты</a>
         <a href="/vacancies">Вакансии</a>
+        <a href="/orders"><i class="fa-solid fa-cart-shopping"></i></a>
         @auth
             <div class="profile-options">
                 <a href="/profile">Личный кабинет</a>

@@ -8,7 +8,7 @@
                 <section class="article-preview">
                     <a href="/news/{{ $newsItem->id }}">
                         <h2>{{ $newsItem-> title }} </h2>
-                        <p>{{ $newsItem-> content }}</p>
+                        <p>{{ strip_tags($newsItem->content) }}</p>
                         <span>{{$newsItem -> published_at}}</span>
                     </a>
                 </section>

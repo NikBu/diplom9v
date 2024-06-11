@@ -3,7 +3,7 @@
 @section('content')
 <div class="main-container">
     <div class="contacts-container">
-        <h1>Контакты</h1>
+        <h1 class="gradient-header">Контакты</h1>
         <div class="contact-info">
             <div class="contact-block">
                 <h2>Офис</h2>

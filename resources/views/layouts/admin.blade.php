@@ -14,6 +14,7 @@
     <a href="/admin/items">Товары</a>
     <a href="/admin/news">Новости</a>
     <a href="/admin/offers">Акции</a>
+    <a href="/admin/orders">Заказы</a>
     <h class="centered">Фенстер Техник</h>
 </header>
 <main>

@@ -6,11 +6,12 @@
     <h2 class="float-left">Категории</h2>
     <a class="btn-create float-right" href="{{ route('categories.create') }}" >Создать категорию</a>
     <table class="table">
-        <thead class=>
+        <thead>
             <tr>
                 <th>#</th>
                 <th>Название</th>
                 <th>Категория-Родитель</th>
+                <th>Описание</th>
                 <th>Опции</th>
             </tr>
         </thead>
@@ -27,6 +28,11 @@
                     @foreach ($category->ancestors as $item)
                         {{ $item->name }},
                     @endforeach
+                </td>
+                <td>
+                    <div class="preview-short">
+                        {{ $category->description }}
+                    </div>
                 </td>
                 <td>
                     <a href="{{ route('categories.edit', $category->id) }}" class="btn">Изменить</a>

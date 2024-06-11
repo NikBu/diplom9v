@@ -122,6 +122,12 @@ input[type="checkbox"] {
 .table tr:hover {
   background-color: #ffcccc; /* Darker red background color on hover */
 }
+.preview-short{
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Number of lines you want to display */
+  -webkit-box-orient: vertical;
+  overflow:hidden;
+}
 /* Submit button */
 .btn {
   padding: 10px 10px;
