@@ -34,20 +34,27 @@ class OrderController extends Controller
         }
 
         $item = Item::find($request->item_id);
-
-        $orderItem = new OrderItem([
-            'order_id' => $latestOrder->id,
-            'item_id' => $item->id,
-            'quantity' => $request->quantity,
-            'price' => $item->price,
-        ]);
-
-        $orderItem->save();
-
+        $existingOrderItem = $latestOrder->orderItems()->where('item_id', $item->id)->first();
+    
+        if ($existingOrderItem) {
+            // If the item already exists in the order, update the quantity
+            $existingOrderItem->quantity += $request->quantity;
+            $existingOrderItem->save();
+        } else {
+            // Create a new OrderItem if the item is not already in the order
+            $orderItem = new OrderItem([
+                'order_id' => $latestOrder->id,
+                'item_id' => $item->id,
+                'quantity' => $request->quantity,
+                'price' => $item->price,
+            ]);
+            $orderItem->save();
+        }
+        
         // Update the total amount in the order
-        $latestOrder->total_amount += $orderItem->quantity * $orderItem->price;
+        $latestOrder->total_amount += $request->quantity * $item->price;
         $latestOrder->save();
-
+        
         return redirect()->back()->with('success', 'Item added to order successfully');
     }
 

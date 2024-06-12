@@ -48,6 +48,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     Route::resource('/items', '\App\Http\Controllers\Admin\AdminItemController');
     Route::resource('/news', '\App\Http\Controllers\Admin\AdminNewsController');
     Route::resource('/offers', '\App\Http\Controllers\Admin\AdminSpecialOfferController');
+    Route::resource('/orders', '\App\Http\Controllers\Admin\AdminOrderController');
     Route::get('/', function () {
         return view('admin.admin-index');
     });

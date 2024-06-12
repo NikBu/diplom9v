@@ -125,6 +125,7 @@ header {
 /* Основной контейнер и сайд-бар +футер*/
 .wrapper {
   display: flex;
+  min-height: 90%;
 }
 .wrapper .sidebar {
   position: fixed;
@@ -160,9 +161,9 @@ header {
 }
 footer{
   margin-left: 200px;
-  bottom: 0;
   background: linear-gradient(90deg, #3a5cae 0%, #2e4c7c 50%, #1a2f4a 100%);
   color: #fff;
+  transition: all 0.3s ease;
 }
 footer table {
   width: 100%;
@@ -181,11 +182,14 @@ footer table tr td {
 }
 footer p,
 footer a {
-  color: #fff;
+  color: #afafaf;
   line-height: 1.6;
 }
 footer a:hover{
   color: #1fc2df; /* Change color on hover */
+}
+footer b{
+  color: #fff;
 }
 
 .wrapper.collapse .sidebar {
@@ -212,7 +216,7 @@ footer a:hover{
 .sub-categories {
   display: none;
   position: fixed;
- left: 200px; /* Position sub-categories to the right of the sidebar */
+  left: 200px; /* Position sub-categories to the right of the sidebar */
   background: #265CB2; /* Different background color for sub-categories */
 }
 .wrapper.collapse .sub-categories{

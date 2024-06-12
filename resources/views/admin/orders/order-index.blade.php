@@ -1,4 +1,4 @@
-23@extends('layouts.admin')
+@extends('layouts.admin')
 @section('page.title', 'Заказы')
 @section('content')
     <h2 class="float-left">Заказы</h2>

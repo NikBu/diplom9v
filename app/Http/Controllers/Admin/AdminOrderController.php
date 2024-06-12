@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Item;
 
 class AdminOrderController extends Controller
 {
@@ -16,63 +17,76 @@ class AdminOrderController extends Controller
         return view('admin.orders.order-index', compact('orders'));
     }
 
-    // Отображение формы создания заказа
-    public function create()
-    {
-        $products = Product::all();
-        return view('admin.orders.order-create', compact('products'));
-    }
+    // // Отображение формы создания заказа
+    // public function create()
+    // {
+    //     $items = Item::all();
+    //     return view('admin.orders.order-create', compact('items'));
+    // }
 
-    // Сохранение нового заказа
-    public function store(Request $request)
-    {
-        $order = new Order();
-        $order->user_id = $request->input('user_id');
-        $order->order_date = $request->input('order_date');
-        $order->total_amount = $request->input('total_amount');
-        $order->save();
+    // // Сохранение нового заказа
+    // public function store(Request $request)
+    // {
+    //     $order = new Order();
+    //     $order->user_id = $request->input('user_id');
+    //     $order->order_date = $request->input('order_date');
+    //     $order->total_amount = $request->input('total_amount');
+    //     $order->save();
 
-        // Привязка выбранных продуктов с их количеством
-        foreach ($request->input('selected_products', []) as $productId) {
-            $order->products()->attach($productId, ['quantity' => $request->input('quantity.'. $productId)]);
-        }
+    //     // Привязка выбранных продуктов с их количеством
+    //     foreach ($request->input('selected_items', []) as $itemId) {
+    //         $order->items()->attach($itemId, ['quantity' => $request->input('quantity.'. $itemId)]);
+    //     }
 
-        return redirect()->back();
-    }
+    //     return redirect()->back();
+    // }
 
     // Отображение формы редактирования заказа
     public function edit(Order $order)
     {
-        $products = Product::all();
-        return view('admin.orders.order-edit', compact('order', 'products'));
+        $items = Item::all();
+        return view('admin.orders.order-edit', compact('order', 'items'));
     }
 
     // Обновление информации о заказе
-    public function update(Request $request, Order $order)
-    {
-        $order->user_id = $request->input('user_id');
-        $order->order_date = $request->input('order_date');
-        $order->total_amount = $request->input('total_amount');
-        $order->save();
+ public function update(Request $request, $orderId)
+{
+    $order = Order::findOrFail($orderId);
 
-        // Синхронизация выбранных продуктов с их количеством
-        $selectedProducts = $request->input('selected_products', []);
-        $quantities = $request->input('quantity', []);
-        $productsData = [];
-        foreach ($selectedProducts as $productId) {
-            $productsData[$productId] = ['quantity' => $quantities[$productId]?? 0];
+    // Update the total amount in the order
+    $order->total_amount = $request->total_price;
+
+    // Update the order date
+    $order->order_date = $request->order_date;
+
+    // Update the status of the order
+    $order->status = $request->status;
+
+    // Update the quantity of items in the order
+    foreach ($request->quantity as $itemId => $quantity) {
+        $orderItem = $order->orderItems()->where('item_id', $itemId)->first();
+        if ($orderItem) {
+            $orderItem->quantity = $quantity;
+            $orderItem->save();
         }
-        $order->products()->sync($productsData);
-
-        return redirect()->route('orders.index')->with('success', 'Заказ успешно обновлен');
     }
 
-    // Удаление заказа
-    public function destroy(Order $order)
-    {
-        $order->products()->detach(); // Отвязка связанных продуктов
-        $order->delete(); // Удаление заказа
+    $order->save();
 
-        return redirect()->route('orders.index')->with('success', 'Заказ успешно удален');
+    return redirect()->route('orders.index')->with('success', 'Заказ успешно изменён');
+}
+
+    // Удаление заказа
+    public function destroy($orderId)
+    {
+        $order = Order::findOrFail($orderId);
+    
+        // Delete the associated OrderItems
+        $order->orderItems()->delete();
+    
+        // Delete the Order
+        $order->delete();
+    
+        return redirect()->route('orders.index')->with('success', 'Order deleted successfully');
     }
 }
