@@ -10,7 +10,7 @@
         paste_data_images: true,
         image_title: true,
         automatic_uploads: true,
-        image_class_list: [
+    image_class_list: [
             { title: 'None', value: '' },
             { title: 'Image', value: 'img-fluid' }
         ],

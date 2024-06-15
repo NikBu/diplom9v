@@ -125,7 +125,7 @@ header {
 /* Основной контейнер и сайд-бар +футер*/
 .wrapper {
   display: flex;
-  min-height: 90%;
+  min-height: 100%;
 }
 .wrapper .sidebar {
   position: fixed;
