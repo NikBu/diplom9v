@@ -1,4 +1,4 @@
-<p align="center">![Лого](https://github.com/NikBu/diplom9v/blob/main/public/images/logo_mini.png?raw=true)</p>
+ ![Лого](https://github.com/NikBu/diplom9v/blob/main/public/images/logo_mini.png?raw=true)
 # Дипломный проект: Веб-приложение для "Фенстер Техник"
 
 Этот проект - веб-приложение, разработанное в рамках моего дипломного проекта, демонстрирующее мои навыки и знания в веб-разработке. Приложение моделирует онлайн-магазин для компании "Фенстер Техник" (Fenster Technik).
