@@ -9,8 +9,8 @@
                 <a href="/special-offers/{{ $offer->id }}">
                 <h2>{{ $offer->title }}</h2>
                 <p>{{ strip_tags($offer->description) }}</p>
-                <p><strong>С:</strong> {{ $offer->start_date->format('M d, Y') }}</p>
-                <p><strong>По:</strong> {{ $offer->end_date->format('M d, Y') }}</p>
+                <p><strong>С:</strong> {{ $offer->start_date}}</p>
+                <p><strong>По:</strong> {{ $offer->end_date}}</p>
                 </a>
             </section>
         @endforeach

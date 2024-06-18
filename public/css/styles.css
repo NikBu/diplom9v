@@ -7,6 +7,9 @@
   font-family: "Oswald", sans-serif;
 }
 /* Стиль тела */
+html{
+  min-height: 100%;
+}
 body{
   background-color: white;
 }

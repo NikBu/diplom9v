@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang = "ru">
 <head>
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
