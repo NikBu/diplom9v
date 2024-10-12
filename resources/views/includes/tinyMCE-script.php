@@ -1,4 +1,4 @@
-<script src="https://cdn.tiny.cloud/1/niwu6quqy7bb7e7xvpbdwbo9upcppuah18mbhtro1k2z4sim/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdn.tiny.cloud/1/YOUR_API_KEY/7/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
     tinymce.init({
         selector: 'textarea#content',
